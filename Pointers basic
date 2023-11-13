@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//pass by value
+void _plus(int a){ // this 'a' is a different var.
+    a = 100;
+}
+//pass by reference
+void increase(int* ptr){//this '*ptr' is pointer that point to addresses of 'ptr' variable
+    *ptr = 100;
+}
+
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int a = 10000; //variables a. This guy has an memory address
+    cout << &a << endl; //with &a it will show where 'a' is locate in a your comptuter's memory
+
+    int* aptr = &a; //here is a pointer name aptr. Its duty is it contain a memory address, in this case is 'a'.
+    cout << aptr << endl; //This line will output the memory address which aptr is contained;
+
+    //This *aptr will access to the variable that this pointers contains that variable memory address.And change its value
+    *aptr = 10;
+    cout << *aptr << endl;// *(pointer name) will act as a variable which memory address its contained
+    cout << a << endl;//The 'a' had changed its value from the line 15 from 10000 to 10
+
+    //This 2 lines below. It will increase its value (++) or decrease its value (--) by size of the data type, in this case int. 
+    aptr++; //up by 4 (4 bytes)
+    cout << aptr << endl;
+    aptr--; //down by 4 (4 bytes)
+    cout << aptr << endl;
+
+    //Pass by value
+    a = 10;
+    _plus(a);//pass the value of 'a'
+    cout << a << endl; //a will be the same, 10.
+
+    increase(aptr);//pass the address of variable 'a'
+    cout << a << endl;
+}
